@@ -48,5 +48,5 @@ steps:
     resourceGroupName: $(rgName)
     location: 'East US'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/$(repo)/main/$(ParametersFolder)/$(Template)'
+    csmFileLink: 'https://raw.githubusercontent.com/pkaan/$(repo)/main/$(ParametersFolder)/$(Template)'
     deploymentMode: 'Incremental'
