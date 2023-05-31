@@ -33,6 +33,12 @@
     color: white;
   }
 
+  .subtitle2 {
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+  }
+
 .mat-toolbar {
     display: flex;
     justify-content: center;
