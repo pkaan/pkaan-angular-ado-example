@@ -166,46 +166,7 @@
                 "minimumElasticInstanceCount": 0,
                 "azureStorageAccounts": {}
             }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_pkaan_name'), '/0673dfc66ad845b0a7d4309a88e3354a')]",
-            "location": "East US",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_pkaan_name'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "N/A",
-                "deployer": "VSTS",
-                "message": "{\"type\":\"deployment\",\"commitId\":\"08516fa090ade8d79a7f62be2b7b976079153154\",\"buildId\":\"28\",\"buildNumber\":\"20230530.8\",\"repoProvider\":\"GitHub\",\"repoName\":\"pkaan/angular-azure\",\"collectionUrl\":\"https://dev.azure.com/peetukaz900/\",\"teamProject\":\"68eba947-5edc-4837-a321-9e3cb01b1a48\",\"buildProjectUrl\":\"https://dev.azure.com/peetukaz900/68eba947-5edc-4837-a321-9e3cb01b1a48\",\"repositoryUrl\":\"https://github.com/pkaan/angular-azure\",\"branch\":\"merge\",\"teamProjectName\":\"PKAAN\",\"slotName\":\"production\"}",
-                "start_time": "2023-05-30T08:36:23.4508219Z",
-                "end_time": "2023-05-30T08:36:23.7476954Z",
-                "active": true
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_pkaan_name'), '/0f4e72218f644accbdb064665a75ab96')]",
-            "location": "East US",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_pkaan_name'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "N/A",
-                "deployer": "VSTS",
-                "message": "{\"type\":\"deployment\",\"commitId\":\"5da71a23e050f274e0d463e51e90e1ecd78281b5\",\"buildId\":\"19\",\"buildNumber\":\"20230529.18\",\"repoProvider\":\"GitHub\",\"repoName\":\"pkaan/angular-azure\",\"collectionUrl\":\"https://dev.azure.com/peetukaz900/\",\"teamProject\":\"68eba947-5edc-4837-a321-9e3cb01b1a48\",\"buildProjectUrl\":\"https://dev.azure.com/peetukaz900/68eba947-5edc-4837-a321-9e3cb01b1a48\",\"repositoryUrl\":\"https://github.com/pkaan/angular-azure\",\"branch\":\"merge\",\"teamProjectName\":\"PKAAN\",\"slotName\":\"production\"}",
-                "start_time": "2023-05-29T22:04:44.0682766Z",
-                "end_time": "2023-05-29T22:04:44.5056742Z",
-                "active": false
-            }
-        },
-    
+        },  
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2022-09-01",
