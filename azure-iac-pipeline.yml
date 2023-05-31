@@ -1,5 +1,3 @@
-# Node.js with Angular
-
 trigger:
 - none
 
@@ -24,6 +22,7 @@ parameters:
     displayName: App insights
 
 variables:
+  repo: 'pkaan-angular-ado-example'
   ${{if eq(parameters.environmentName, 'sandbox')}}:
     rgName: 'pkaan_group'
     WebApp: 'pkaan'
@@ -36,35 +35,18 @@ variables:
   ${{if eq(parameters.insights, 'true')}}:
     Template: 'app-insights.json'
 
-stages:
-  - stage: Build
-    jobs:
-    - job: Build
-      pool:
-        name: pkaan-selfhost-pool
-        vmImage: ubuntu-latest
-      continueOnError: false
-      steps:
-      - task: CopyFiles@2
-        displayName:  Copy files
-        inputs:
-          SourceFolder: '$(System.DefaultWorkingDirectory)/iac/sbx/'
-          Contents: '**'
-          TargetFolder: '$(Build.ArtifactStagingDirectory)/arm'
-      - task: PublishBuildArtifacts@1
-        displayName:  Publish build artifacts
-        inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'drop'
-
-      - task: AzureResourceManagerTemplateDeployment@3
-        inputs:
-          deploymentScope: 'Resource Group'
-          azureResourceManagerConnection: $(serviceConnection)
-          subscriptionId: '4b9c23f1-02d5-4863-9c82-9fa1098c566d'
-          action: 'Create Or Update Resource Group'
-          resourceGroupName: $(rgName)
-          location: 'East US'
-          templateLocation: 'Linked artifact'
-          csmFileLink: '$Build.ArtifactStagingDirectory/drop/arm/$(Template)'
-          deploymentMode: 'Incremental'
+pool:
+  name: pkaan-selfhost-pool
+  vmImage: ubuntu-latest
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: $(serviceConnection)
+    subscriptionId: '4b9c23f1-02d5-4863-9c82-9fa1098c566d'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: $(rgName)
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/$(repo)/main/$(ParametersFolder)/$(Template)'
+    deploymentMode: 'Incremental'
