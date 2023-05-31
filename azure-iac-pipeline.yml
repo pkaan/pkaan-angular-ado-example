@@ -50,12 +50,12 @@ stages:
         inputs:
           SourceFolder: '$(System.DefaultWorkingDirectory)/iac/sbx/'
           Contents: '**'
-          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)/arm'
       - task: PublishBuildArtifacts@1
         displayName:  Publish build artifacts
         inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'arm'
+            ArtifactName: 'drop'
 
       - task: AzureResourceManagerTemplateDeployment@3
         inputs:
@@ -66,5 +66,5 @@ stages:
           resourceGroupName: $(rgName)
           location: 'East US'
           templateLocation: 'Linked artifact'
-          csmFileLink: '$Build.ArtifactStagingDirectory/arm/app-service.json'
+          csmFileLink: '$Build.ArtifactStagingDirectory/drop/arm/(Template)'
           deploymentMode: 'Incremental'
