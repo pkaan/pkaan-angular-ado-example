@@ -1,0 +1,70 @@
+# Node.js with Angular
+
+trigger:
+- none
+
+parameters:
+  - name: environmentName
+    type: string
+    default: "sandbox"
+    displayName: Target Environment
+    values:
+      - "sandbox"    
+  - name: app
+    type: boolean
+    default: false
+    displayName: App service
+  - name: asp
+    type: boolean
+    default: false
+    displayName: App service plan
+  - name: insights
+    type: boolean
+    default: false
+    displayName: App insights
+
+variables:
+  ${{if eq(parameters.environmentName, 'sandbox')}}:
+    rgName: 'pkaan_group'
+    WebApp: 'pkaan'
+    serviceConnection: 'pkaan_sbx_connection'
+    ParametersFolder: 'iac/sbx'
+  ${{if eq(parameters.app, 'true')}}:
+    Template: 'app-service.json'
+  ${{if eq(parameters.asp, 'true')}}:
+    Template: 'app-service-plan.json'
+  ${{if eq(parameters.insights, 'true')}}:
+    Template: 'app-insights.json'
+
+stages:
+  - stage: Build
+    jobs:
+    - job: Build
+      pool:
+        name: pkaan-selfhost-pool
+        vmImage: ubuntu-latest
+      continueOnError: false
+      steps:
+      - task: CopyFiles@2
+        displayName:  Copy files
+        inputs:
+          SourceFolder: '$(System.DefaultWorkingDirectory)/iac/sbx/'
+          Contents: '**'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      - task: PublishBuildArtifacts@1
+        displayName:  Publish build artifacts
+        inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'arm'
+
+      - task: AzureResourceManagerTemplateDeployment@3
+        inputs:
+          deploymentScope: 'Resource Group'
+          azureResourceManagerConnection: $(serviceConnection)
+          subscriptionId: '4b9c23f1-02d5-4863-9c82-9fa1098c566d'
+          action: 'Create Or Update Resource Group'
+          resourceGroupName: $(rgName)
+          location: 'East US'
+          templateLocation: 'Linked artifact'
+          csmFileLink: '$Build.ArtifactStagingDirectory/arm/app-service.json'
+          deploymentMode: 'Incremental'

@@ -1,0 +1,19 @@
+.mat-toolbar {
+    display: flex;
+    justify-content: center;
+    background-color: #2b0668;
+    padding: 15px 48px;
+    font-size: large;
+  }
+
+.cv {
+    display: flex;
+    justify-content: center;
+}
+
+.pdf-viewer {
+    height: 100vh;
+    width: 80vw;
+    display: block;
+    margin: 0 auto;
+  }

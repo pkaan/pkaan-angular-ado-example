@@ -1,0 +1,52 @@
+
+  .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2b0668;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    background-color: #2b0668;
+    margin: 0.75%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+  
+  .divider {
+    padding: 0.5%;
+  }
+  
+  .title {
+    display: flex;
+    justify-content: center;
+    padding-top: 2.5%;
+    color: white;
+    /* font-weight: bold; */
+    font-size: 55px;
+  }
+  .subtitle {
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+
+.mat-toolbar {
+    display: flex;
+    justify-content: center;
+    background-color: #2b0668;
+    color: white;
+    padding-right: 3%;
+}
+
+a
+{
+    color: #ffffff;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}
