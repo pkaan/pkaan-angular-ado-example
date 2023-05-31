@@ -66,5 +66,5 @@ stages:
           resourceGroupName: $(rgName)
           location: 'East US'
           templateLocation: 'Linked artifact'
-          csmFileLink: '$Build.ArtifactStagingDirectory/drop/arm/(Template)'
+          csmFileLink: '$Build.ArtifactStagingDirectory/drop/arm/$(Template)'
           deploymentMode: 'Incremental'

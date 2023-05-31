@@ -22,21 +22,29 @@
   .title {
     display: flex;
     justify-content: center;
-    padding-top: 2.5%;
     color: white;
     /* font-weight: bold; */
     font-size: 55px;
+    padding-top: 3%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
   }
   .subtitle {
     display: flex;
     justify-content: center;
     color: white;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
   }
 
   .subtitle2 {
     display: flex;
     justify-content: center;
     color: rgb(255, 255, 255);
+    font-size: 12px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+
   }
 
 .mat-toolbar {
@@ -45,6 +53,8 @@
     background-color: #2b0668;
     color: white;
     padding-right: 3%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
 }
 
 a
