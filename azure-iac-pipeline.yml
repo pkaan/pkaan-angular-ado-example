@@ -1,6 +1,11 @@
 trigger:
 - none
 
+pr:
+  paths:
+    include: 
+    - templates
+  
 parameters:
   - name: environmentName
     type: string
@@ -28,25 +33,50 @@ variables:
     WebApp: 'pkaan'
     serviceConnection: 'pkaan_sbx_connection'
     ParametersFolder: 'iac/sbx'
-  ${{if eq(parameters.app, 'true')}}:
-    Template: 'app-service.json'
-  ${{if eq(parameters.asp, 'true')}}:
-    Template: 'app-service-plan.json'
-  ${{if eq(parameters.insights, 'true')}}:
-    Template: 'app-insights.json'
+  
 
-pool:
-  name: pkaan-selfhost-pool
-  vmImage: ubuntu-latest
-steps:
-- task: AzureResourceManagerTemplateDeployment@3
-  inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: $(serviceConnection)
-    subscriptionId: '4b9c23f1-02d5-4863-9c82-9fa1098c566d'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: $(rgName)
-    location: 'East US'
-    templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/pkaan/$(repo)/main/$(ParametersFolder)/$(Template)'
-    deploymentMode: 'Incremental'
+stages:
+  - stage: Deploy
+    jobs:
+    - job: Deploy
+      pool:
+        name: pkaan-selfhost-pool
+        vmImage: ubuntu-latest
+      continueOnError: false
+      steps:
+        - ${{if eq(parameters.app, 'true')}}:
+          - template: templates/iac-deploy.yml
+            parameters:
+              deploymentScope: 'Resource Group'
+              azureResourceManagerConnection: $(serviceConnection)
+              subscriptionId: '4b9c23f1-02d5-4863-9c82-9fa1098c566d'
+              action: 'Create Or Update Resource Group'
+              resourceGroupName: $(rgName)
+              location: 'East US'
+              templateLocation: 'URL of the file'
+              csmFileLink: 'https://raw.githubusercontent.com/pkaan/$(repo)/main/$(ParametersFolder)/app-service.json'
+              deploymentMode: 'Incremental'
+        - ${{if eq(parameters.asp, 'true')}}:
+          - template: templates/iac-deploy.yml
+            parameters:
+              deploymentScope: 'Resource Group'
+              azureResourceManagerConnection: $(serviceConnection)
+              subscriptionId: '4b9c23f1-02d5-4863-9c82-9fa1098c566d'
+              action: 'Create Or Update Resource Group'
+              resourceGroupName: $(rgName)
+              location: 'East US'
+              templateLocation: 'URL of the file'
+              csmFileLink: 'https://raw.githubusercontent.com/pkaan/$(repo)/main/$(ParametersFolder)/app-service-plan.json'
+              deploymentMode: 'Incremental'
+        - ${{if eq(parameters.insights, 'true')}}:
+          - template: templates/iac-deploy.yml
+            parameters:
+              deploymentScope: 'Resource Group'
+              azureResourceManagerConnection: $(serviceConnection)
+              subscriptionId: '4b9c23f1-02d5-4863-9c82-9fa1098c566d'
+              action: 'Create Or Update Resource Group'
+              resourceGroupName: $(rgName)
+              location: 'East US'
+              templateLocation: 'URL of the file'
+              csmFileLink: 'https://raw.githubusercontent.com/pkaan/$(repo)/main/$(ParametersFolder)/app-insights.json'
+              deploymentMode: 'Incremental'
