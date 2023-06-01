@@ -3,19 +3,16 @@
         <div class="text-center" style="text-align:center">
             <h1 class="title">Terve rekrytiimi!</h1>
             <h2 class="subtitle" style="text-align:center">
-                Tämä simppeli Angular web-app ja app-service iac on deployattu Azureen Azure DevOps (ADO) -pipelinejä käyttäen.
+                Tämä Angular web-app ja IaC on deployattu Azureen Azure DevOps (ADO) -pipelineja käyttäen.
             </h2>
 
             <h3 class="subtitle2" style="text-align:center">
-                Huom. "Oikeassa elämässä" rakentaisin tämän apin Azuren ympäristöön, jossa olisi käytössä muitakin
+                Huom. "Oikeassa elämässä" rakentaisin / olisin tekemisisssä Azuren ympäristön kanssa, jossa olisi käytössä muitakin
                 resursseja (esim. vnet, subnets, gateway, keyvault, api), ja appiin pääsy olisi suojattu. Lisäksi
                 appi olisi rekisteröity Azure AD:hen. Käytössä olisi myös eri ympäristöt (esim. sbx/dev/qa/prod) ja custom domainit sertifikaatein.<br>
 
-                Projektin pipelinet on tehty vain apin ja iac:n build + deploy -tarkoituksiin. Ne käyttävät self-host agenttia.
-                Oikeassa elämässä koodi myös mm. testattaisiin unit, dast & sast -testein ci-vaiheessa. Ja mahdollisesti myös
-                lintattaisiin ja formatoitaisiin. <br> <br>
+                ADO pipelinet on tehty vain ohjelmakoodin ja IaC:n build + deploy -tarkoituksiin. Esim. testit on jätetty pois. <br>
 
-                Appi ei ole myöskään osoitus koodauskyvyistäni, vaan tarkoituksena on demota yksinkertaista cloud & ci/cd kokonaisuutta Azurea käyttäen.
             </h3>
 
         </div>
