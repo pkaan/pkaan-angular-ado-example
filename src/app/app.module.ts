@@ -10,12 +10,10 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { CvComponent } from './cv/cv.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [ 
   { path: 'welcome', component: WelcomeComponent},
-  { path: 'cv', component: CvComponent},
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 ];
@@ -24,7 +22,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     WelcomeComponent,
-    CvComponent
   ],
   imports: [
     BrowserModule,
