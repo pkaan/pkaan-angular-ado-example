@@ -3,28 +3,32 @@
         <div class="text-center" style="text-align:center">
             <h1 class="title">Terve rekrytiimi!</h1>
             <h2 class="subtitle" style="text-align:center">
-                Tämä Angular web-app ja IaC on deployattu Azureen Azure DevOps (ADO) -pipelineja käyttäen.
-            </h2>
+                Kaanin Peetu tässä, tein tämän nettisovelluksen antaakseni yksinkertaisen esimerkin osaamisestani pilvipuolella. </h2> <br>
 
             <h3 class="subtitle2" style="text-align:center">
-                Huom. "Oikeassa elämässä" rakentaisin / olisin tekemisisssä Azuren ympäristön kanssa, jossa olisi käytössä muitakin
-                resursseja (esim. vnet, subnets, gateway, keyvault, api), ja appiin pääsy olisi suojattu. Lisäksi
-                appi olisi rekisteröity Azure AD:hen. Käytössä olisi myös eri ympäristöt (esim. sbx/dev/qa/prod) ja custom domainit sertifikaatein.<br>
-
-                ADO pipelinet on tehty vain ohjelmakoodin ja IaC:n build + deploy -tarkoituksiin. Esim. testit on jätetty pois. <br>
+                Tämä Angular sovellus on deployattu Azureen Azure DevOps (ADO) -pipelineja ja IaC:ta (Azure ARM) käyttäen. <br>
+                Huom. esimerkkiin kuuluu vain Azuren app serviceen (paas) liittyvät resurssit: app service plan, app service ja insights. <br>
+                Muita Azuren resursseja - mm. vnet, subnets, gateway, keyvault, nsg, storage account - en ole ottanut mukaan. <br>
+                Sovellusta ei ole myöskään rekisteröity Azure AD:hen, ja ympäristönä toimii vain sandbox. <br>
+                Myös custom domainit ja niiden sertifikaatit on jätetty pois.<br>
+                ADO pipelinet on tehty vain ohjelmakoodin ja IaC:n build ja deploy -tarkoituksiin. Ohjelmakoodin testit on jätetty pois. <br>
 
             </h3>
 
         </div>
         <div>
             <mat-toolbar class="flexSpaceBetween" style="text-align:center">
-                <a style="padding-right: 3%" routerLink="/cv">View CV</a>
-                <a style="padding-right: 3%" href="https://github.com/pkaan/pkaan-angular-ado-example">Repo</a>
-                <a style="padding-right: 3%" href="https://dev.azure.com/peetukaz900/PKAAN/_build">ADO pipelines</a>
+                <a style="text-align:center" href="https://www.linkedin.com/in/peetukaan/">Linkedin</a> <br>
+                <a style="padding-right: 8%; padding-left: 8%; text-align:center" href="https://github.com/pkaan/pkaan-angular-ado-example">Sovelluksen repo GitHubissa</a>
+                <a style="text-align:center" href="https://dev.azure.com/peetukaz900/PKAAN/_build">ADO pipelines</a>
             </mat-toolbar>
         </div>
     </div>
 </div>
 <div style="border: 10px solid rgb(255, 255, 255);">
-    <img class="center" src="/assets/images/nic.gif">
+    <h3 class="subtitle3" style="text-align:center">
+        Sertifikaatit: AZ-900 <br> 
+        ID: I783-2355
+    </h3>
+    <img class="center" src="/assets/az900.png">
 </div>
